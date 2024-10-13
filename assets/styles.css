@@ -1,0 +1,91 @@
+body {
+    background-color: #f3eddf;
+}
+
+.header{
+    display: flex;
+    background-color: #B51222;
+    justify-content: center;
+    border: 5px solid gold;
+    padding: 10px;
+}
+
+.sm_logo{
+    height: 90px;
+    margin-left: auto;
+    margin-right: 15px;
+}
+
+.main{
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.contenedor_navegacion{
+    display: flex;
+    justify-content: center;
+    /* margin: 0 auto; */
+    padding: 10px;
+}
+
+.boton{
+    background-color: gold;
+    text-decoration: none;
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    margin: 10px;
+    border: 0px solid;
+}
+
+.edo_1:hover{
+    color: white;
+    background-color: #B51222;
+}
+
+.edo_2:hover{
+    color: white;
+    background-color: #B51222;
+}
+
+.page_box{
+    display: flex;
+    margin-top: 10px;
+    width: 100%;
+    height: 800px;
+    justify-content: center;
+}
+
+.title{
+    justify-self: center;
+}
+
+.page_title{
+    margin: 0px;
+}
+
+.div_parametros{
+    border: 3px solid gold;
+    width: 40%;
+    border-radius: 20px;
+    justify-content: center;
+    padding: 10px;
+    margin-right: 5px;
+}
+
+.div_grafica{
+    border: 3px solid gold;
+    width: 60%;
+    border-radius: 20px;
+    padding: 10px;
+    margin-left: 10px;
+}
+
+.grafica{
+    display: flex;
+    justify-content: center;
+}
+
+.div_flex{
+    display: flex;
+}
