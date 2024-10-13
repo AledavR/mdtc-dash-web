@@ -14,26 +14,35 @@ To run the dash web page follow these steps:
 
 1. Clone this repository
 
-2. Visit the repository directory through console
+2. Create a python virtual environment in the repository's directory
 
-3. Create a python virtual environment 
+```
+python -m venv dash-web-venv
+```
 
-```python -m venv dash-web-venv```
+3. Source the virtual environment
 
-4. Source the virtual environment
+- On windows: 
+```
+.\venv\dash-web-venv\Scripts\activate
+```
 
-On windows: 
-```.\venv\dash-web-venv\Scripts\activate ```
-On Linux:
-```source dash-web-venv/bin/activate```
+- On Linux:
+```
+source dash-web-venv/bin/activate
+```
 
-5. Install dependencies:
+4. Install python dependencies:
 
-```pip install numpy scipy dash sympy```
+```
+pip install numpy scipy dash sympy
+```
 
-6. Run the server:
+5. Run the server:
 
-```python app.py```
+```
+python app.py
+```
 
 
 ## Contribution
