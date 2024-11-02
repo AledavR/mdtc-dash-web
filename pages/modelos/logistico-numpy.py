@@ -1,17 +1,18 @@
 import dash
 from dash import Dash, html, Input, Output, callback, dcc
-from utils import ecuacion_logistica_sympy
+from utils import ecuacion_logistica
 
 dash.register_page(
     __name__,
-    path='/log-sym',
-    name='Modelo Logistico - Sympy'
+    path='/modelos/logistico-numpy',
+    name='Modelo logistico (numpy)'
 )
+
 
  # Layout HTML
 
 layout = html.Div(className='pages', children = [
-    html.H2('Modelo Logistico - Sympy', className='page_title'),
+    html.H2('Modelo Logistico', className='page_title'),
     html.Div(className='page_box', children = [
         html.Div(className='div_parametros', children = [
             html.H2('PARÁMETROS',className='title'),
@@ -51,9 +52,9 @@ layout = html.Div(className='pages', children = [
             html.Div(className='grafica', children = [
                 dcc.Loading(
                     type='dot',
-                    children=dcc.Graph(id='figure_2',style={'width': '100%', 'height': '700px'})
+                    children=dcc.Graph(id='figure_log_model',style={'width': '100%', 'height': '700px'})
                 ),
-            ])
+            ])                        
     ]),
     ]),
 ])
@@ -61,7 +62,7 @@ layout = html.Div(className='pages', children = [
 # Callbacks
 
 @callback(
-    Output('figure_2', 'figure'),
+    Output('figure_log_model', 'figure'),
     Input('pob_ini', 'value'),
     Input('time_ini', 'value'),
     Input('time_fin', 'value'),
@@ -72,6 +73,6 @@ layout = html.Div(className='pages', children = [
     Input('no_arrows', 'value'),
 )
 
-def grafica_edo2(P0,t_i,t_f,r,k,mallado,size_vec,no_arrows):
-    fig = ecuacion_logistica_sympy(k, P0, r, t_i, t_f,mallado, size_vec,no_arrows)
+def grafica_log_numpy(P0,t_i,t_f,r,k,mallado,size_vec, no_arrows):
+    fig = ecuacion_logistica(k, P0, r, t_i, t_f,mallado, size_vec, no_arrows)
     return fig

@@ -1,12 +1,13 @@
 body {
     background-color: #f3eddf;
+    margin: 0;
 }
 
 .header{
     display: flex;
     background-color: #B51222;
     justify-content: center;
-    border: 5px solid gold;
+    /* border: 5px solid gold; */
     padding: 10px;
 }
 
@@ -22,31 +23,69 @@ body {
 }
 
 .contenedor_navegacion{
-    display: flex;
-    justify-content: center;
-    /* margin: 0 auto; */
-    padding: 10px;
+    overflow: hidden;
+    background-color: #B51222;
+}
+
+.contenedor_navegacion .boton {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  /* text-decoration: none; */
+  overflow: hidden;
+}
+
+.subnav{
+    float: left;
+    overflow: hidden;
 }
 
 .boton{
-    background-color: gold;
-    text-decoration: none;
-    width: 150px;
+    font-size: 16px;
+    border: none;
     height: 50px;
-    border-radius: 10px;
-    margin: 10px;
-    border: 0px solid;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: #B51222;
+    margin: 0;
 }
 
-.edo_1:hover{
-    color: white;
+.contenedor_navegacion .menu:hover, .subnav:hover .item{
     background-color: #B51222;
 }
 
-.edo_2:hover{
-    color: white;
+.subnav-content {
+    display: none;
+    position: absolute;
+    left: 0;
     background-color: #B51222;
+    width: 100%;
+    z-index: 1;
+    margin-top: 50px;
 }
+
+.subnav-content .item {
+  float: left;
+  color: white;
+  text-decoration: none;
+}
+
+.subnav-content .item:hover {
+  background-color: #eee;
+  color: black;
+}
+
+.subnav:hover .menu {
+    background-color: #821721;
+}
+
+.subnav:hover > .subnav-content {
+  display: block;
+}
+
 
 .page_box{
     display: flex;
@@ -61,7 +100,10 @@ body {
 }
 
 .page_title{
-    margin: 0px;
+    padding: 10px;
+    margin: 0;
+    background-color: gold;
+    color: #333;
 }
 
 .div_parametros{
@@ -70,6 +112,7 @@ body {
     border-radius: 20px;
     justify-content: center;
     padding: 10px;
+    margin-left: 10px;
     margin-right: 5px;
 }
 

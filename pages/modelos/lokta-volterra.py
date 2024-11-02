@@ -4,7 +4,7 @@ from utils import ecuacion_lv
 
 dash.register_page(
     __name__,
-    path='/lv',
+    path='/modelos/lotka-volterra',
     name='Modelo Depredador-Presa'
 )
 
@@ -48,7 +48,7 @@ layout = html.Div(className='pages', children = [
             html.Div(className='grafica', children = [
                 dcc.Loading(
                     type='dot',
-                    children=dcc.Graph(id='figure_4',style={'width': '100%', 'height': '700px'})
+                    children=dcc.Graph(id='figure_lv',style={'width': '100%', 'height': '700px'})
                 ),
             ])                        
             
@@ -59,7 +59,7 @@ layout = html.Div(className='pages', children = [
 # Callbacks
 
 @callback(
-    Output('figure_4', 'figure'),
+    Output('figure_lv', 'figure'),
     Input('a', 'value'),
     Input('b', 'value'),
     Input('c', 'value'),
@@ -71,6 +71,6 @@ layout = html.Div(className='pages', children = [
     Input('mallado', 'value'),
 )
 
-def grafica_edo4(a,b,c,d,P0,D0,t,t_i,mallado):
+def grafica_lv(a,b,c,d,P0,D0,t,t_i,mallado):
     fig = ecuacion_lv(a,b,c,d,P0,D0,t,t_i,mallado)
     return fig
