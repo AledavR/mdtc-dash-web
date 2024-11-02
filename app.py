@@ -6,7 +6,11 @@ Alejandro Ramirez
 from dash import Dash, html, dcc
 import dash
 
-app = Dash(__name__, use_pages=True, suppress_callback_exceptions=True)
+external_stylesheets = [
+    'https://fonts.googleapis.com/css2?family=Poiret+One&display=swap',
+]
+
+app = Dash(__name__, use_pages=True, suppress_callback_exceptions=True, external_stylesheets=external_stylesheets)
 
 app.layout = html.Div(children=[
     html.Div(
