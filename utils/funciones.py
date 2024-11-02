@@ -85,7 +85,7 @@ def ecuacion_logistica(K:float, P0:float, r:float, t0:float, t:float, cant:float
         template='ggplot2',
         margin=dict(l=10,r=10,t=90,b=0),
         paper_bgcolor='#f3eddf',
-        legend=dict(orientation='h',y=1.1)
+        legend=dict(orientation='h',y=1.2)
     )
 
     # contorno a la grafica
@@ -214,7 +214,7 @@ def ecuacion_logistica_sympy(K:float, P0:float, r:float, t0:float, t:float, cant
         width=800,
         template='ggplot2',
         margin=dict(l=10,r=10,t=90,b=0),
-        legend=dict(orientation='h',y=1.1),
+        legend=dict(orientation='h',y=1.2),
         paper_bgcolor='#f3eddf',
     )
 
@@ -347,7 +347,7 @@ def ecuacion_logistica_umbral(K:float, P0:float, r:float, t0:float, t:float, can
         template='ggplot2',
         paper_bgcolor='#f3eddf',
         margin=dict(l=10,r=10,t=90,b=0),
-        legend=dict(orientation='h',y=1.1)
+        legend=dict(orientation='h',y=1.2)
     )
 
     # contorno a la grafica
@@ -435,7 +435,7 @@ def ecuacion_lv(a:float,b:float,c:float,d:float,P0:float,D0:float,t:float,t_i:fl
         template='ggplot2',
         margin=dict(l=10,r=10,t=90,b=0),
         paper_bgcolor='#f3eddf',
-        legend=dict(orientation='h',y=1.1)
+        legend=dict(orientation='h',y=1.2)
     )
 
     # contorno a la grafica
@@ -456,3 +456,60 @@ def ecuacion_lv(a:float,b:float,c:float,d:float,P0:float,D0:float,t:float,t_i:fl
 
     return fig
 
+
+def modelo_sir(N, I0, R0, beta, gamma, tiempo_total, n):
+    
+    def sir(y, t, N, beta, gamma):
+        S, I, R = y
+        dSdt = -beta * S * I / N
+        dIdt = beta * S * I / N - gamma * I
+        dRdt = gamma * I
+        return dSdt, dIdt, dRdt
+
+    S0 = N - I0 - R0
+    y0 = S0, I0, R0
+    t = np.linspace(0, tiempo_total, n)
+    
+    solutions = odeint(sir, y0, t, args=(N, beta, gamma))
+    S, I, R = solutions.T
+
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=t, y=S, mode='lines', name='Susceptibles', line=dict(color='blue')))
+    fig.add_trace(go.Scatter(x=t, y=I, mode='lines', name='Infectados', line=dict(color='red')))
+    fig.add_trace(go.Scatter(x=t, y=R, mode='lines', name='Recuperados', line=dict(color='green')))
+    
+    # Etiquetas para la gráfica
+    fig.update_layout(
+        title={
+            'text':'Modelo SIR',
+            'x':0.5,
+            'y':0.92,
+            'xanchor':'center'
+        },
+        xaxis_title='Tiempo (t)',
+        yaxis_title='Población (P)',
+        width=800,
+        template='ggplot2',
+        margin=dict(l=10,r=10,t=90,b=0),
+        paper_bgcolor='#f3eddf',
+        legend=dict(orientation='h',y=1.2)
+    )
+
+    # contorno a la grafica
+    fig.update_xaxes(
+        mirror=True,
+        showline=True,
+        linecolor='green',
+        gridcolor='gray',
+        showgrid=False
+    )
+    fig.update_yaxes(
+        mirror=True,
+        showline=True,
+        linecolor='green',
+        gridcolor='gray',
+        showgrid=False,
+    )
+
+
+    return fig

@@ -15,28 +15,41 @@ layout = html.Div(className='pages', children = [
     html.Div(className='page_box', children = [
         html.Div(className='div_parametros', children = [
             html.H2('PARÁMETROS',className='title'),
-            html.Div([
-                html.H3('Población Inicial Depredadores'),
-                dcc.Input(type='number', value=12, id='D0'),
+            html.H3('Poblaciones iniciales',className='input-label'),
+            html.Div(className='div_flex', children = [
+                html.Div([
+                    html.H3('Depredadores',className='input-label'),
+                    dcc.Input(type='number', value=12, id='D0'),
+                ], className='input-right-margin'),
+                html.Div([
+                    html.H3('Presas', className='input-label'),
+                    dcc.Input(type='number', value=56, id='P0'),
+                ], className='input-right-margin'),
             ]),
-            html.Div([
-                html.H3('Población Inicial Presas'),
-                dcc.Input(type='number', value=56, id='P0'),
+            html.H3('Tiempo',className='input-label'),
+            html.Div(className='div_flex', children = [
+                html.Div([
+                    html.H3('Tiempo inicial',className='input-label'),
+                    dcc.Input(type='number', value=0, id='t_i'),
+                ], className='input-right-margin'),
+                html.Div([
+                    html.H3('Tiempo final',className='input-label'),
+                    dcc.Input(type='number', value=50, id='t'),
+                ], className='input-right-margin'),
             ]),
-            html.Div([
-                html.H3('Tiempo inicial'),
-                dcc.Input(type='number', value=0, id='t_i'),
+            html.H3('Tasa de Nacimiento',className='input-label'),
+            html.Div(className='div_flex', children = [
+                html.Div([
+                    html.H3('Presas', className='input-label'),
+                    dcc.Input(max=2, min=0, step=0.1, type='number', value=1.0, id='a'),
+                ], className='input-right-margin'),
+                html.Div([
+                    html.H3('Depredadores', className='input-label'),
+                    dcc.Input(max=2, min=0, step=0.1, type='number', value=1.0, id='c'),
+                ], className='input-right-margin'),
             ]),
-            html.Div([
-                html.H3('Tiempo final'),
-                dcc.Input(type='number', value=50, id='t'),
-            ]),
-            html.H3('Tasa de nacimiento - Presas'),
-            dcc.Input(max=2, min=0, step=0.1, type='number', value=1.0, id='a'),
             html.H3('Tasa de depredación'),
             dcc.Input(max=2, min=0, step=0.1, type='number', value=0.2, id='b'),
-            html.H3('Tasa de nacimiento - Depredadores'),
-            dcc.Input(max=2, min=0, step=0.1, type='number', value=1.0, id='c'),
             html.H3('Tasa de mortalidad de depredadores'),
             dcc.Input(max=2, min=0, step=0.1, type='number', value=0.1, id='d'),
             html.H3('Numero de muestras'),

@@ -11,6 +11,10 @@ body {
     padding: 10px;
 }
 
+.main{
+    color: #eee;
+}
+
 .sm_logo{
     height: 90px;
     margin-left: auto;
@@ -30,7 +34,7 @@ body {
 .contenedor_navegacion .boton {
   float: left;
   font-size: 16px;
-  color: white;
+  color: #eee;
   text-align: center;
   padding: 14px 16px;
   /* text-decoration: none; */
@@ -47,12 +51,12 @@ body {
     border: none;
     height: 50px;
     outline: none;
-    color: white;
+    color: #eee;
     padding: 14px 16px;
     background-color: #B51222;
     margin: 0;
 }
-
+s
 .contenedor_navegacion .menu:hover, .subnav:hover .item{
     background-color: #B51222;
 }
@@ -69,13 +73,13 @@ body {
 
 .subnav-content .item {
   float: left;
-  color: white;
+  color: #eee;
   text-decoration: none;
 }
 
 .subnav-content .item:hover {
   background-color: #eee;
-  color: black;
+  color: #333;
 }
 
 .subnav:hover .menu {
@@ -97,6 +101,14 @@ body {
 
 .title{
     justify-self: center;
+    background-color: gold;
+    padding: 10px 10px;
+    margin: 0px;
+    color: #333;
+}
+
+.input-label{
+    margin: 0px;
 }
 
 .page_title{
@@ -107,21 +119,20 @@ body {
 }
 
 .div_parametros{
-    border: 3px solid gold;
+    /* border: 3px solid gold; */
     width: 40%;
-    border-radius: 20px;
     justify-content: center;
-    padding: 10px;
+    padding: 5px 10px;
     margin-left: 10px;
     margin-right: 5px;
 }
 
 .div_grafica{
-    border: 3px solid gold;
+    /* border: 3px solid gold; */
     width: 60%;
-    border-radius: 20px;
-    padding: 10px;
-    margin-left: 10px;
+    padding: 5px 10px;
+    margin-left: 5px;
+    margin-right: 10px;
 }
 
 .grafica{
@@ -131,4 +142,15 @@ body {
 
 .div_flex{
     display: flex;
+    margin-bottom: 10px;
+}
+
+.input-right-margin{
+    margin-right: 30px;
+}
+
+input[type=number]{
+    margin: 0px 5px;
+    padding: 10px 20px;
+    width: 50px;
 }

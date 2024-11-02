@@ -20,20 +20,26 @@ layout = html.Div(className='pages', children = [
                 html.Div([
                     html.H3('Población Inicial'),
                     dcc.Input(type='number', value=10, id='pob_ini'),
-                ]),
+                ], className='input-right-margin'),
                 html.Div([
                     html.H3('Tiempo inicial'),
                     dcc.Input(type='number', value=0, id='time_ini'),
-                ]),
+                ], className='input-right-margin'),
                 html.Div([
                     html.H3('Tiempo final'),
                     dcc.Input(type='number', value=60, id='time_fin'),
-                ]),
+                ], className='input-right-margin'),
             ]),
-            html.H3('Tasa de crecimiento'),
-            dcc.Input(max=5, min=0, step=0.1, type='number', value=0.1, id='r'),
-            html.H3('Capacidad de carga'),
-            dcc.Input(type='number',value=150, id='K'),
+            html.Div(className='div_flex', children = [
+                html.Div([
+                    html.H3('Tasa de crecimiento'),
+                    dcc.Input(max=5, min=0, step=0.1, type='number', value=0.1, id='r'),
+                ], className='input-right-margin'),
+                html.Div([
+                    html.H3('Capacidad de carga'),
+                    dcc.Input(type='number',value=150, id='K'),
+                ], className='input-right-margin'),
+            ]),
             html.H3('Malla para el Campo de Vectores'),
             dcc.Slider(min=1, max=40, step=1, value=15, marks=None, tooltip={'placement':'bottom','always_visible':True}, id='mallado'),
             html.H3('Tamaño del Vector'),

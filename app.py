@@ -32,10 +32,21 @@ app.layout = html.Div(children=[
                             dcc.Link(html.Button('Modelo Logistico - Sympy', className='boton item'), href='/modelos/logistico-sympy'),
                             dcc.Link(html.Button('Crecimiento con Umbral', className='boton item'), href='/modelos/umbral'),
                             dcc.Link(html.Button('Modelo Lotka-Volterra', className='boton item'), href='/modelos/lotka-volterra'),
+                            dcc.Link(html.Button('Modelo SIR', className='boton item'), href='/modelos/sir-model'),
                         ])
                 ]
             ),
-            dcc.Link(html.Button('Analisis', className='boton menu'), href='/analisis'),
+            html.Div(
+                className='subnav',
+                children = [
+                    dcc.Link(html.Button('Analisis', className='boton menu'), href='/analisis/edo-system'),
+                    html.Div(
+                        className='subnav-content',
+                        children = [
+                            dcc.Link(html.Button('Sistema de EDOs', className='boton item'), href='/analisis/ode-system'),
+                        ])
+                ]
+            ),
         ]
     ),
     dash.page_container
