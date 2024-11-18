@@ -513,3 +513,206 @@ def modelo_sir(N, I0, R0, beta, gamma, tiempo_total, n):
 
 
     return fig
+
+
+def modelo_lv_comp_intra(X0, Y0, Z0, a21, a22, a23, a31, a32, a33, d1, d2, t, cant):
+    
+    estado_inicial = [X0,Y0,Z0]
+    P_values = np.linspace(0, 1, cant)
+    t_values = np.linspace(0, t, cant)
+
+    # Crear una malla de puntos (P, t)
+    T, P = np.meshgrid(t_values, P_values)
+
+    # Definimos el sistema
+    def lotka_volterra(est_ini,t,a21,a22,a23,a31,a32,a33,d1,d2):
+        X,Y,Z = est_ini
+        dX = X*(1 - X - Y - Z)
+        dY = Y*(-d1 + a21*X - a22*Y - a23*Z)
+        dZ = Z*(-d2 + a31*X + a32*Y - a33*Z)
+        return dX, dY, dZ
+
+    # Encontramos numericamente las soluciones al sistema usando scipy
+    sol = odeint(lotka_volterra,estado_inicial,t_values,args=(a21,a22,a23,a31,a32,a33,d1,d2))
+
+    # Almacenamos las soluciones para ploteo
+    presas, depredadores_int, depredadores_sup = sol[:,0], sol[:,1], sol[:,2]
+
+    # Ploteo
+    fig = go.Figure()
+
+    fig.add_trace(
+        go.Scatter(
+            x = t_values,
+            y = presas,
+            #mode = 'markers+lines',
+            line=dict(color='blue'),
+            name = 'Poblacion presas',
+            line_shape='spline'
+        )
+    )
+    
+
+    fig.add_trace(
+        go.Scatter(
+            x = t_values,
+            y = depredadores_int,
+            #mode = 'markers+lines',
+            line=dict(color='red'),
+            name = 'Poblacion depredadores intermedio',
+            line_shape='spline'
+        )
+    )
+    
+    fig.add_trace(
+        go.Scatter(
+            x = t_values,
+            y = depredadores_sup,
+            #mode = 'markers+lines',
+            line=dict(color='green'),
+            name = 'Poblacion depredadores superior',
+            line_shape='spline'
+        )
+    )
+
+
+    # Etiquetas para la gráfica
+    fig.update_layout(
+        title={
+            'text':'Comportamiento poblacion depredador presa',
+            'x':0.5,
+            'y':0.92,
+            'xanchor':'center'
+        },
+        xaxis_title='Tiempo (t)',
+        yaxis_title='Población (P)',
+        width=800,
+        template='ggplot2',
+        margin=dict(l=10,r=10,t=90,b=0),
+        paper_bgcolor='#f3eddf',
+        legend=dict(orientation='h',y=1.2)
+    )
+
+    # contorno a la grafica
+    fig.update_xaxes(
+        mirror=True,
+        showline=True,
+        linecolor='green',
+        gridcolor='gray',
+        showgrid=False
+    )
+    fig.update_yaxes(
+        mirror=True,
+        showline=True,
+        linecolor='green',
+        gridcolor='gray',
+        showgrid=False,
+    )
+
+    return fig
+
+
+def modelo_lv_comp_intra_3d(X0, Y0, Z0, a21, a22, a23, a31, a32, a33, d1, d2, t, cant):
+    
+    estado_inicial = [X0,Y0,Z0]
+    P_values = np.linspace(0, 1, cant)
+    t_values = np.linspace(0, t, cant)
+
+    # Crear una malla de puntos (P, t)
+    T, P = np.meshgrid(t_values, P_values)
+
+    # Definimos el sistema
+    def lotka_volterra(est_ini,t,a21,a22,a23,a31,a32,a33,d1,d2):
+        X,Y,Z = est_ini
+        dX = X*(1 - X - Y - Z)
+        dY = Y*(-d1 + a21*X - a22*Y - a23*Z)
+        dZ = Z*(-d2 + a31*X + a32*Y - a33*Z)
+        return dX, dY, dZ
+
+    # Encontramos numericamente las soluciones al sistema usando scipy
+    sol = odeint(lotka_volterra,estado_inicial,t_values,args=(a21,a22,a23,a31,a32,a33,d1,d2))
+
+    # Almacenamos las soluciones para ploteo
+    presas, depredadores_int, depredadores_sup = sol[:,0], sol[:,1], sol[:,2]
+
+    # Ploteo
+    fig = go.Figure()
+
+    fig.add_trace(
+        go.Scatter3d(
+            x = presas,
+            y = depredadores_int,
+            z = depredadores_sup,
+            #mode = 'markers+lines',
+            line=dict(color='blue'),
+            marker=dict(
+                size=12,
+                color=t_values,                # set color to an array/list of desired values
+                colorscale='Viridis',   # choose a colorscale
+                opacity=0.8
+            ),
+            name = 'Poblacion presas',
+            # line_shape='spline'
+        )
+    )
+
+    fig.update_layout(
+        scene = dict(
+            xaxis = dict(nticks=4, range=[0,1],),
+            yaxis = dict(nticks=4, range=[0,1],),
+            zaxis = dict(nticks=4, range=[0,1],),),
+        title={
+            'text':'Comportamiento poblacion depredador presa',
+            'x':0.5,
+            'y':0.92,
+            'xanchor':'center'
+        },
+        width=800,
+        template='ggplot2',
+        # margin=dict(l=10,r=10,t=90,b=0),
+        paper_bgcolor='#f3eddf',
+        legend=dict(orientation='h',y=1.2),
+        margin=dict(r=20, l=10, b=10, t=10))
+
+    # Etiquetas para la gráfica
+    # fig.update_layout(
+    #     title={
+    #         'text':'Comportamiento poblacion depredador presa',
+    #         'x':0.5,
+    #         'y':0.92,
+    #         'xanchor':'center'
+    #     },
+    #     xaxis_title='Presas',
+    #     yaxis_title='Depr. Intermedio',
+    #     # zaxis_title='Depr. Superior',
+    #     width=800,
+    #     template='ggplot2',
+    #     margin=dict(l=10,r=10,t=90,b=0),
+    #     paper_bgcolor='#f3eddf',
+    #     legend=dict(orientation='h',y=1.2)
+    # )
+
+    # contorno a la grafica
+    fig.update_xaxes(
+        mirror=True,
+        showline=True,
+        linecolor='green',
+        gridcolor='gray',
+        showgrid=False
+    )
+    fig.update_yaxes(
+        mirror=True,
+        showline=True,
+        linecolor='green',
+        gridcolor='gray',
+        showgrid=False,
+    )
+    # fig.update_zaxes(
+    #     mirror=True,
+    #     showline=True,
+    #     linecolor='green',
+    #     gridcolor='gray',
+    #     showgrid=False,
+    # )
+
+    return fig
