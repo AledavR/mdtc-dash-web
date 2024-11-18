@@ -35,6 +35,8 @@ def clas_punto(trace,det):
                 return "nodo inestable"
         elif disc == 0:
             return  "nodo degenerado"
+    else:
+        return "punto uniforme"      
 
 def analisis_punto_critico(equations, symbols, crit_points):
     x,y = symbols

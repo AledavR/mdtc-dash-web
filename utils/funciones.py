@@ -457,10 +457,13 @@ def ecuacion_lv(a:float,b:float,c:float,d:float,P0:float,D0:float,t:float,t_i:fl
     return fig
 
 
-def modelo_sir(N, I0, R0, beta, gamma, tiempo_total, n):
+def modelo_sir(N, I0, R0, beta, gamma, tiempo_total, n, t_variacion,beta_,gamma_):
     
     def sir(y, t, N, beta, gamma):
         S, I, R = y
+        if t >= t_variacion:
+            beta = beta_
+            gamma = gamma_
         dSdt = -beta * S * I / N
         dIdt = beta * S * I / N - gamma * I
         dRdt = gamma * I

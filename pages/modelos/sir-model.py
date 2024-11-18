@@ -17,7 +17,7 @@ layout = html.Div(className='pages', children = [
             html.Div(className='div_flex', children =[
                 html.Div([
                     html.H3('Tamaño de poblacion',className='subtitle'),
-                    dcc.Input(type='number', value=150,min=100, id='pop_size'),
+                    dcc.Input(type='number', value=150,min=100,step=5, id='pop_size'),
                 ], className='input-right-margin'),
                 html.Div([
                     html.H3('Infectados iniciales',className='subtitle'),
@@ -48,6 +48,20 @@ layout = html.Div(className='pages', children = [
                     dcc.Input(type='number',min=1, value=100, id='n'),
                 ], className='input-right-margin'),
             ]),
+            html.Div(className='div_flex', children =[
+                html.Div([
+                    html.H3('Tiempo de variacion',className='subtitle'),
+                    dcc.Input(type='number', value=0, id='t_var'),
+                ], className='input-right-margin'),
+                html.Div([
+                    html.H3('Nuevo ratio de inf.',className='subtitle'),
+                    dcc.Input(type='number', value=0.05,min=0.001,step=0.001, id='inf_prime'),
+                ], className='input-right-margin'),
+                html.Div([
+                    html.H3('Nuevo ratio de rec.',className='subtitle'),
+                    dcc.Input(type='number', value=0.01,min=0.001,step=0.001, id='rec_prime'),
+                ], className='input-right-margin'),
+            ]),
 
     ]),
         html.Div(className='div_grafica',children = [
@@ -68,8 +82,11 @@ layout = html.Div(className='pages', children = [
     Input('gamma', 'value'),
     Input('time', 'value'),
     Input('n', 'value'),
+    Input('t_var', 'value'),
+    Input('inf_prime', 'value'),
+    Input('rec_prime', 'value'),
 )
 
-def grafica_sir(N,I0,R0,beta,gamma,tiempo_total,n):
-    fig = modelo_sir(N,I0,R0,beta,gamma,tiempo_total,n)
+def grafica_sir(N,I0,R0,beta,gamma,tiempo_total,n,t_var,inf_prime,rec_prime):
+    fig = modelo_sir(N,I0,R0,beta,gamma,tiempo_total,n,t_var,inf_prime,rec_prime)
     return fig

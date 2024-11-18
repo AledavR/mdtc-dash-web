@@ -31,13 +31,13 @@ layout = html.Div(className='pages', children = [
                 ], className='input-right-margin'),
                 html.Div([
                     html.H3('Valor maximo',className='subtitle'),
-                    dcc.Input(type='number', value=0, id='max'),
+                    dcc.Input(type='number', value=10, id='max'),
                 ], className='input-right-margin'),
             ]),
             html.Button('Calcular puntos de equilibrio', id='calcular', n_clicks=0),
     ]),
         html.Div(className='div_grafica',children = [
-            html.H2('RESULTADOS',className='html'),
+            html.H2('RESULTADOS',className='page_title'),
             html.Div(id='puntos_criticos'),
             dcc.Markdown(id='matriz_jacobiana', mathjax=True),
             html.Div(id='analisis_puntos'),
