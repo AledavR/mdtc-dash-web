@@ -4,7 +4,8 @@ from utils import modelo_lv_comp_intra
 
 dash.register_page(
     __name__,
-    path='/modelos/lotka-volterra-comp',
+    path='/',
+    # path='/modelos/lotka-volterra-comp',
     name='Modelo Lotka-Volterra - Competicion Intraespecifica'
 )
 
@@ -51,7 +52,7 @@ layout = html.Div(className='pages', children = [
                     dcc.Input(max=1, min=0, step=0.01, type='number', value=0.09, id='d2'),
                 ], className='input-right-margin'),
             ]),
-            html.H3('Parametros de Interacción',className='input-label'),
+            html.H3('Parametros de Interacción - Depredador Intermedio',className='input-label'),
             html.Div(className='div_flex', children = [
                 html.Div([
                     html.H3('a21'),
@@ -65,6 +66,9 @@ layout = html.Div(className='pages', children = [
                     html.H3('a23'),
                     dcc.Input(max=1, min=0, step=0.01, type='number', value=0.09, id='a23'),
                 ], className='input-right-margin'),
+            ]),
+            html.H3('Parametros de Interacción - Depredador Superior',className='input-label'),
+            html.Div(className='div_flex', children = [
                 html.Div([
                     html.H3('a31'),
                     dcc.Input(max=1, min=0, step=0.01, type='number', value=0.18, id='a31'),

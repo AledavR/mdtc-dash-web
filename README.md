@@ -7,6 +7,7 @@ This repository contains a dash web page implementation of different mathematica
 + Logarithmic growth function
 + Exponential growth with threshold
 + Lotka-Volterra
++ Lotka-Volterra with intraspecific competition
 
 ## Setup
 
@@ -50,3 +51,8 @@ python app.py
 - When pushing a commit be sure to be descriptive with your changes. 
 - Make sure that your code works before pushing.
 - When creating your `venv` use any name that ends in venv e.g. `dash-venv` or `.venv`
+
+
+## Author
+
+Ramirez Ch. Alejandro David

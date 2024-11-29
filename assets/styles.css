@@ -66,15 +66,14 @@ s
     position: absolute;
     left: 0;
     background-color: #B51222;
-    width: 100%;
     z-index: 1;
     margin-top: 50px;
 }
 
 .subnav-content .item {
-  float: left;
-  color: #eee;
-  text-decoration: none;
+    width: 100%;
+    color: #eee;
+    text-decoration: none;
 }
 
 .subnav-content .item:hover {
@@ -87,7 +86,9 @@ s
 }
 
 .subnav:hover > .subnav-content {
-  display: block;
+    display: flex;
+    flex-direction: column;
+
 }
 
 

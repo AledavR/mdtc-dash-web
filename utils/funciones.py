@@ -661,9 +661,9 @@ def modelo_lv_comp_intra_3d(X0, Y0, Z0, a21, a22, a23, a31, a32, a33, d1, d2, t,
 
     fig.update_layout(
         scene = dict(
-            xaxis = dict(nticks=4, range=[0,1],),
-            yaxis = dict(nticks=4, range=[0,1],),
-            zaxis = dict(nticks=4, range=[0,1],),),
+            xaxis = dict(nticks=4, range=[0,1], title=dict(text="Poblacion de Presa")),
+            yaxis = dict(nticks=4, range=[0,1], title=dict(text="Poblacion de Depredador Intermedio")),
+            zaxis = dict(nticks=4, range=[0,1], title=dict(text="Poblacion de Depredador Superior")),),
         title={
             'text':'Comportamiento poblacion depredador presa',
             'x':0.5,
