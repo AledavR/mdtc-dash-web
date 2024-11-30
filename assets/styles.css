@@ -6,9 +6,9 @@ body {
 .header{
     display: flex;
     background-color: #B51222;
-    justify-content: center;
-    /* border: 5px solid gold; */
     padding: 10px;
+    justify-content: space-between;
+    align-content: center;
 }
 
 .main{
@@ -17,13 +17,8 @@ body {
 
 .sm_logo{
     height: 90px;
-    margin-left: auto;
+    margin-left: 0px;
     margin-right: 15px;
-}
-
-.main{
-    margin-left: 0;
-    margin-right: auto;
 }
 
 .contenedor_navegacion{
@@ -33,7 +28,7 @@ body {
 
 .contenedor_navegacion .boton {
   float: left;
-  font-size: 16px;
+  font-size: 25px;
   color: #eee;
   text-align: center;
   padding: 14px 16px;
@@ -47,16 +42,15 @@ body {
 }
 
 .boton{
-    font-size: 16px;
+    font-size: 25px;
     border: none;
-    height: 50px;
+    height: 60px;
     outline: none;
     color: #eee;
-    padding: 14px 16px;
     background-color: #B51222;
     margin: 0;
 }
-s
+
 .contenedor_navegacion .menu:hover, .subnav:hover .item{
     background-color: #B51222;
 }
@@ -67,7 +61,7 @@ s
     left: 0;
     background-color: #B51222;
     z-index: 1;
-    margin-top: 50px;
+    margin-top: 60px;
 }
 
 .subnav-content .item {

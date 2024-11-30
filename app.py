@@ -16,7 +16,8 @@ app.layout = html.Div(children=[
     html.Div(
         className='header', children = [
             html.Img(className = 'sm_logo', src=dash.get_asset_url('sm_logo.png')),
-            html.H1('Tecnicas de Modelamiento 2024', className = 'main')
+            html.H1('Tecnicas de Modelamiento 2024', className = 'main'),
+            html.Div(),
         ]
     ),
     html.Div(
