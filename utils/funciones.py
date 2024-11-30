@@ -719,3 +719,62 @@ def modelo_lv_comp_intra_3d(X0, Y0, Z0, a21, a22, a23, a31, a32, a33, d1, d2, t,
     # )
 
     return fig
+
+
+def modelo_sir_rumor(N, I0, R0, beta, gamma, tiempo_total, n):
+    
+    def sir(y, t, N, beta, gamma):
+        S, I, R = y
+        dSdt = -beta * S * I
+        dIdt = beta * S * I - gamma * I * R
+        dRdt = gamma * I * R
+        return dSdt, dIdt, dRdt
+
+    S0 = N - I0 - R0
+    y0 = S0, I0, R0
+    t = np.linspace(0, tiempo_total, n)
+    
+    solutions = odeint(sir, y0, t, args=(N, beta, gamma))
+    S, I, R = solutions.T
+
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=t, y=S, mode='lines', name='Susceptibles', line=dict(color='blue')))
+    fig.add_trace(go.Scatter(x=t, y=I, mode='lines', name='Infectados', line=dict(color='red')))
+    fig.add_trace(go.Scatter(x=t, y=R, mode='lines', name='Racionales', line=dict(color='green')))
+    
+    # Etiquetas para la gráfica
+    fig.update_layout(
+        title={
+            'text':'Modelo SIR',
+            'x':0.5,
+            'y':0.92,
+            'xanchor':'center'
+        },
+        xaxis_title='Tiempo (t)',
+        yaxis_title='Población (P)',
+        width=800,
+        template='ggplot2',
+        margin=dict(l=10,r=10,t=90,b=0),
+        paper_bgcolor='#f3eddf',
+        legend=dict(orientation='h',y=1.2)
+    )
+
+    # contorno a la grafica
+    fig.update_xaxes(
+        mirror=True,
+        showline=True,
+        linecolor='green',
+        gridcolor='gray',
+        showgrid=False
+    )
+    fig.update_yaxes(
+        mirror=True,
+        showline=True,
+        linecolor='green',
+        gridcolor='gray',
+        showgrid=False,
+    )
+
+
+    return fig
+

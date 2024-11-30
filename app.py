@@ -32,10 +32,11 @@ app.layout = html.Div(children=[
                             dcc.Link(html.Button('Modelo Logistico - Sympy', className='boton item'), href='/modelos/logistico-sympy'),
                             dcc.Link(html.Button('Crecimiento con Umbral', className='boton item'), href='/modelos/umbral'),
                             dcc.Link(html.Button('Modelo Lotka-Volterra', className='boton item'), href='/modelos/lotka-volterra'),
-                            # dcc.Link(html.Button('Modelo Lotka-Volterra', className='boton item'), href='/modelos/lotka-volterra-comp'),
                             dcc.Link(html.Button('Modelo Lotka-Volterra - Comp. Intraespecie', className='boton item'), href='/'),
                             dcc.Link(html.Button('Modelo Lotka-Volterra - Comp. Intraespecie - 3D', className='boton item'), href='/modelos/lotka-volterra-comp-3d'),
                             dcc.Link(html.Button('Modelo SIR', className='boton item'), href='/modelos/sir-model'),
+                            dcc.Link(html.Button('Modelo SIR', className='boton item'), href='/modelos/sir-model-rumores'),
+                            dcc.Link(html.Button('Modelo Lotka-Volterra 3D', className='boton item'), href='/modelos/lotka-volterra-comp-3d'),
                         ])
                 ]
             ),
